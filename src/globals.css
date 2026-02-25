@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+:root {
+  --font-dm-sans: 'DM Sans';
+  --font-sora: 'Sora';
+  --font-space-mono: 'Space Mono';
+
+  --void: #0C1017;
+  --obsidian: #121828;
+  --slate: #1A2238;
+  --slate-2: #222D48;
+  --electric: #6C63FF;
+  --electric-2: #8B85FF;
+  --plasma: #00E5FF;
+  --plasma-2: #00B4CC;
+  --ember: #FF6B35;
+  --ember-2: #FF8C42;
+  --white: #FFFFFF;
+  --silver: #E2E8F8;
+  --mist: #8892B0;
+  --primary-dark: #0C1017;
+  --primary-navy: #121828;
+  --accent-teal: #00C896;
+  --accent-teal-2: #00A87A;
+  --card-bg: #1A2238;
+  --outline: rgba(108,99,255,0.18);
+  --outline-hi: rgba(108,99,255,0.55);
+  --grad-hero: linear-gradient(135deg,#0C1017 0%,#121828 50%,#182040 100%);
+  --grad-electric: linear-gradient(135deg,#6C63FF,#8B85FF);
+  --grad-plasma: linear-gradient(135deg,#00E5FF,#00B4CC);
+  --grad-ember: linear-gradient(135deg,#FF6B35,#FF8C42);
+  --grad-teal: linear-gradient(135deg,#00C896,#00A87A);
+  --grad-mixed: linear-gradient(135deg,#6C63FF 0%,#00E5FF 100%);
+  --grad-spectrum: linear-gradient(135deg,#6C63FF 0%,#00E5FF 60%,#FF6B35 100%);
+  --glow-electric: 0 0 40px rgba(108,99,255,0.45),0 12px 32px rgba(108,99,255,0.25);
+  --glow-plasma: 0 0 40px rgba(0,229,255,0.35),0 12px 32px rgba(0,229,255,0.20);
+  --glow-ember: 0 0 32px rgba(255,107,53,0.40),0 12px 24px rgba(255,107,53,0.25);
+  --glow-card: 0 20px 60px rgba(108,99,255,0.12);
+  --glow-card-hi: 0 28px 80px rgba(108,99,255,0.20);
+}
+
+@theme {
+  --color-void: var(--void);
+  --color-obsidian: var(--obsidian);
+  --color-slate: var(--slate);
+  --color-slate-2: var(--slate-2);
+  --color-electric: var(--electric);
+  --color-electric-2: var(--electric-2);
+  --color-plasma: var(--plasma);
+  --color-plasma-2: var(--plasma-2);
+  --color-ember: var(--ember);
+  --color-ember-2: var(--ember-2);
+  --color-silver: var(--silver);
+  --color-mist: var(--mist);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-navy: var(--primary-navy);
+  --color-accent-teal: var(--accent-teal);
+  --color-accent-teal-2: var(--accent-teal-2);
+  --color-card-bg: var(--card-bg);
+
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: var(--font-space-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@layer utilities {
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(108,99,255,0.3); }
+    50% { box-shadow: 0 0 60px rgba(108,99,255,0.6); }
+  }
+  .text-gradient-electric {
+    @apply bg-clip-text text-transparent bg-[image:var(--grad-electric)];
+  }
+  .text-gradient-plasma {
+    @apply bg-clip-text text-transparent bg-[image:var(--grad-plasma)];
+  }
+  .text-gradient-ember {
+    @apply bg-clip-text text-transparent bg-[image:var(--grad-ember)];
+  }
+  .text-gradient-spectrum {
+    @apply bg-clip-text text-transparent bg-[image:var(--grad-spectrum)];
+  }
+  .group:hover .group-hover\:text-gradient-spectrum {
+    background: var(--grad-spectrum);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-mixed {
+    @apply bg-clip-text text-transparent bg-[image:var(--grad-mixed)];
+  }
+  .bg-gradient-electric {
+    @apply bg-[image:var(--grad-electric)];
+  }
+  .bg-gradient-plasma {
+    @apply bg-[image:var(--grad-plasma)];
+  }
+  .bg-gradient-ember {
+    @apply bg-[image:var(--grad-ember)];
+  }
+  .bg-gradient-hero {
+    @apply bg-[image:var(--grad-hero)];
+  }
+  .bg-gradient-teal {
+    @apply bg-[image:var(--grad-teal)];
+  }
+  .text-gradient-teal {
+    @apply bg-clip-text text-transparent bg-[image:var(--grad-teal)];
+  }
+  .glass-card {
+    @apply bg-slate/70 backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.25)] transition-all duration-500 ease-out;
+  }
+  .glass-card:hover {
+    @apply border-white/[0.15] shadow-[0_16px_48px_rgba(108,99,255,0.15)] -translate-y-0.5;
+  }
+  .glass-nav {
+    @apply bg-[rgba(12,16,23,0.92)] backdrop-blur-2xl border-b border-white/[0.06];
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 15px;
+}
+
+@media (min-width: 768px) {
+  html { font-size: 15px; }
+}
+
+@media (min-width: 1280px) {
+  html { font-size: 16px; }
+}
+
+/* Offset for fixed navbar when scrolling to hash targets */
+[id] {
+  scroll-margin-top: 100px;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Refined selection */
+::selection {
+  background: rgba(108, 99, 255, 0.25);
+  color: #fff;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0C1017;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(108, 99, 255, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(108, 99, 255, 0.5);
+}
