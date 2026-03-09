@@ -62,7 +62,7 @@ function getPricing(
 const launchFeatures = [
   "0% Markup Fees",
   "2 Team Members",
-  "5,000 Subscribers",
+  "10,000 Subscribers",
   "Number Coexistence",
   "WhatsApp AI Agent",
   "100,000 AI Message Tokens",
@@ -94,7 +94,7 @@ const scaleFeatures = [
   "5 Team Members",
   "Omnichannel Inbox: WhatsApp, Instagram & Facebook",
   "Appointment Booking System",
-  "15,000 Subscribers",
+  "20,000 Subscribers",
   "High Speed Broadcasting",
   "Unlimited AI Message Tokens",
   "AI Intent Detection",
@@ -148,7 +148,7 @@ export default function PricingSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative glass-card rounded-2xl p-8 md:p-10 max-w-md w-full text-center border border-electric/20 shadow-[0_0_60px_rgba(108,99,255,0.2)]"
+              className="relative glass-card rounded-2xl p-6 sm:p-8 md:p-10 max-w-md w-full text-center border border-electric/20 shadow-[0_0_60px_rgba(108,99,255,0.2)]"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -309,7 +309,7 @@ export default function PricingSection() {
         </motion.div>
 
         {/* Plan Cards */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto mb-16 md:mb-20">
           <PlanCard
             market={market}
             name="Launch Plan"
@@ -350,7 +350,7 @@ export default function PricingSection() {
               Pricing Notes
             </h3>
           </div>
-          <ul className="space-y-1.5 text-xs text-gray-500 leading-relaxed ml-7 list-disc">
+          <ul className="space-y-1.5 text-xs text-gray-500 leading-relaxed ml-4 sm:ml-7 list-disc">
             <li>
               <strong className="text-gray-200">Local Pricing (BDT)</strong>{" "}
               — Flat discounts are applied per month across all billing cycles to
@@ -517,7 +517,7 @@ function PlanCard({
         <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">
           What&apos;s included
         </p>
-        <ul className="space-y-2.5 sm:max-h-[340px] sm:overflow-y-auto sm:pr-2">
+        <ul className="space-y-2.5 max-h-[280px] sm:max-h-[340px] overflow-y-auto pr-2">
           {features.map((f) => (
             <li
               key={f}

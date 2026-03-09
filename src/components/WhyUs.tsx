@@ -110,7 +110,7 @@ export default function WhyUs() {
         </div>
 
         {/* Main 3 highlights as horizontal cards */}
-        <div className="grid md:grid-cols-3 gap-5 mb-14">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 mb-14">
           {highlights.map((item, index) => (
             <motion.div
               key={index}
@@ -118,7 +118,7 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.12 }}
-              className={`glass-card rounded-2xl p-6 border ${item.border} group`}
+              className={`glass-card rounded-2xl p-5 sm:p-6 border ${item.border} group`}
             >
               <div
                 className={`w-11 h-11 rounded-xl ${item.bg} flex items-center justify-center mb-4 border ${item.border} transition-transform duration-300 group-hover:scale-110`}

@@ -18,7 +18,7 @@ export default function WebDevelopmentPage() {
         <Navbar />
         
         {/* Hero Section */}
-        <section className="pt-28 pb-16 relative overflow-hidden">
+        <section className="pt-20 sm:pt-28 pb-12 sm:pb-16 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-hero z-0" />
           <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-accent-teal mb-6">
@@ -30,13 +30,10 @@ export default function WebDevelopmentPage() {
             <p className="text-sm text-gray-400 mb-8">
               Fast, beautiful, and conversion-focused websites and web applications — from landing pages to full-scale e-commerce platforms — engineered to help your business grow.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link to="/#contact" className="inline-flex items-center justify-center gap-2 bg-gradient-teal text-primary-dark font-semibold text-sm px-6 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(0,200,150,0.4)] transition-all duration-300">
-                Start Your Project
+            <div className="flex justify-center">
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-gradient-teal text-primary-dark font-semibold text-sm px-6 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(0,200,150,0.4)] transition-all duration-300">
+                Contact Us
                 <ArrowRight size={15} />
-              </Link>
-              <Link to="/portfolio" className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white font-medium text-sm px-6 py-2.5 rounded-full hover:bg-white/10 transition-all duration-300">
-                See How It Works
               </Link>
             </div>
           </div>
@@ -48,7 +45,7 @@ export default function WebDevelopmentPage() {
             <p className="text-sm text-gray-400 leading-relaxed mb-12 text-center">
               Your website is often the first impression a potential customer has of your business — and in today's increasingly digital marketplace, that impression determines whether they trust you or move on to a competitor. FlowGent builds websites that do not just look impressive — they load fast, rank on Google, guide visitors toward action, and convert browsers into buyers. We use modern, enterprise-grade technology to deliver websites that are as powerful under the hood as they are beautiful on the surface.
             </p>
-            <div className="glass-card p-7 rounded-2xl border border-white/[0.06]">
+            <div className="glass-card p-5 sm:p-7 rounded-2xl border border-white/[0.06]">
               <h2 className="text-xl font-display font-bold mb-3 text-accent-teal">What Makes a High-Performance Website?</h2>
               <p className="text-[0.85rem] text-gray-400 leading-relaxed">
                 A high-performance website is fast, responsive on mobile, optimized for search engines, and designed with a clear conversion goal in mind. It communicates your brand's value instantly, guides visitors through a logical journey, and makes taking action effortless. FlowGent builds every website with these principles at the core, using modern frameworks for reliability and speed, Tailwind CSS for precision design, and accessible, production-grade components.
@@ -70,7 +67,7 @@ export default function WebDevelopmentPage() {
                 { icon: Building2, title: "Business & Corporate Websites", description: "Professional multi-page websites that build credibility, clearly communicate your services, and generate enquiries — making your business look as professional online as it is in reality.", features: ["Multi-page structure with CMS blog", "Google Maps and WhatsApp live chat", "SEO-optimized page architecture", "Contact forms and enquiry management", "Team, portfolio, and testimonial sections"] },
                 { icon: Code2, title: "Custom Web Applications", description: "Interactive platforms, dashboards, booking systems, membership portals, and SaaS tools tailored to your specific business workflow and user needs.", features: ["User authentication and role management", "Dynamic dashboards with real-time data", "Third-party API and CRM integration", "Admin panel and data management tools", "Scalable architecture built for growth"] }
               ].map((deliverable, i) => (
-                <div key={i} className="bg-primary-navy p-8 rounded-2xl border border-white/5 hover:border-accent-teal/30 transition-colors">
+                <div key={i} className="bg-primary-navy p-5 sm:p-8 rounded-2xl border border-white/5 hover:border-accent-teal/30 transition-colors">
                   <deliverable.icon className="text-accent-teal w-10 h-10 mb-4" />
                   <h3 className="text-lg font-bold mb-2">{deliverable.title}</h3>
                   <p className="text-gray-400 leading-relaxed mb-6">{deliverable.description}</p>

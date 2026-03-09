@@ -173,3 +173,50 @@ body::before {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(108, 99, 255, 0.5);
 }
+
+/* --- Headline typography: clear, professional and responsive --- */
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 0 0 0.6em 0;
+  font-size: clamp(1.75rem, 2.8vw + 0.4rem, 3.5rem);
+  letter-spacing: -0.02em;
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.08;
+  margin: 0 0 0.55em 0;
+  font-size: clamp(1.4rem, 2.2vw + 0.2rem, 2.6rem);
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.12;
+  margin: 0 0 0.5em 0;
+  font-size: clamp(1.15rem, 1.6vw + 0.2rem, 1.9rem);
+}
+
+h4, .h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.45em 0;
+  font-size: clamp(1rem, 1.2vw + 0.1rem, 1.4rem);
+}
+
+h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0 0 0.35em 0;
+  font-size: 0.95rem;
+}
+
+/* Make utility classes that some components already reference more prominent */
+.font-display {
+  font-family: var(--font-display) !important;
+}
+

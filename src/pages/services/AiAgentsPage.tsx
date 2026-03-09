@@ -18,7 +18,7 @@ export default function AiAgentsPage() {
         <Navbar />
         
         {/* Hero Section */}
-        <section className="pt-28 pb-16 relative overflow-hidden">
+        <section className="pt-20 sm:pt-28 pb-12 sm:pb-16 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-hero z-0" />
           <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-accent-teal mb-6">
@@ -30,13 +30,10 @@ export default function AiAgentsPage() {
             <p className="text-sm text-gray-400 mb-8">
               Let intelligent automation handle the repetitive tasks draining your team's time — customer queries, lead qualification, data entry, and internal workflows — so your people can focus on the work that actually grows your business.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link to="/#contact" className="inline-flex items-center justify-center gap-2 bg-gradient-teal text-primary-dark font-semibold text-sm px-6 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(0,200,150,0.4)] transition-all duration-300">
-                Build My AI Agent
+            <div className="flex justify-center">
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-gradient-teal text-primary-dark font-semibold text-sm px-6 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(0,200,150,0.4)] transition-all duration-300">
+                Contact Us
                 <ArrowRight size={15} />
-              </Link>
-              <Link to="/portfolio" className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white font-medium text-sm px-6 py-2.5 rounded-full hover:bg-white/10 transition-all duration-300">
-                See What Is Possible
               </Link>
             </div>
           </div>
@@ -48,7 +45,7 @@ export default function AiAgentsPage() {
             <p className="text-sm text-gray-400 leading-relaxed mb-12 text-center">
               Every growing business reaches a point where the workload outpaces the team. Customer queries pile up. Leads go cold because nobody followed up in time. Data sits in spreadsheets waiting to be processed. Repetitive tasks consume hours that should be spent on strategy and growth. FlowGent builds Custom AI Agents using n8n — a powerful, flexible automation platform that connects your tools, triggers intelligent actions, and operates 24 hours a day, 7 days a week, without fatigue, error, or overtime pay. This is not science fiction — it is practical automation that businesses are using right now to scale without scaling headcount.
             </p>
-            <div className="glass-card p-7 rounded-2xl border border-white/[0.06]">
+            <div className="glass-card p-5 sm:p-7 rounded-2xl border border-white/[0.06]">
               <h2 className="text-xl font-display font-bold mb-3 text-accent-teal">What Is an AI Agent Built with n8n?</h2>
               <p className="text-[0.85rem] text-gray-400 leading-relaxed">
                 n8n is an open-source workflow automation platform that allows us to build sophisticated, multi-step automation flows — connecting your CRM, WhatsApp, email, website, spreadsheets, databases, and any API-enabled tool into a single intelligent system. An AI Agent is an automation that does not just move data from A to B — it makes decisions, generates responses using AI language models, qualifies leads based on predefined criteria, escalates to humans when needed, and learns from each interaction. FlowGent designs, builds, and deploys these agents specifically around your business processes, your tools, and your goals.

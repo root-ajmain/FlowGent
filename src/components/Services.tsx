@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { ShieldCheck, Share2, Rocket, Code, BrainCircuit, X, Check } from "lucide-react";
+import { motion } from "motion/react";
+import { Link } from 'react-router-dom';
+import { ShieldCheck, Share2, Rocket, Code, BrainCircuit } from "lucide-react";
 
 interface ServiceData {
   id: string;
@@ -175,91 +175,8 @@ const services: ServiceData[] = [
 ];
 
 export default function Services() {
-  const [activePopup, setActivePopup] = useState<string | null>(null);
-  const activeService = services.find((s) => s.id === activePopup);
-
   return (
     <section id="services" className="py-20 bg-void relative">
-      {/* ═══ Service Detail Popup ═══ */}
-      <AnimatePresence>
-        {activeService && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-            onClick={() => setActivePopup(null)}
-          >
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92, y: 24 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 24 }}
-              transition={{ type: "spring", damping: 26, stiffness: 320 }}
-              className="relative glass-card rounded-2xl p-6 sm:p-8 max-w-lg w-full border border-white/10 shadow-[0_0_60px_rgba(108,99,255,0.15)] max-h-[85vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close button */}
-              <button
-                onClick={() => setActivePopup(null)}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-500 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
-              >
-                <X size={14} />
-              </button>
-
-              {/* Header */}
-              <div className="flex items-center gap-3 mb-4">
-                <div className={`w-11 h-11 rounded-xl bg-white/[0.04] flex items-center justify-center border border-white/[0.06]`}>
-                  <activeService.icon size={22} className={activeService.iconColor} />
-                </div>
-                <div>
-                  <h3 className="text-lg font-display font-bold text-white leading-tight">
-                    {activeService.title}
-                  </h3>
-                  {activeService.badge && (
-                    <span className={`inline-block mt-1 px-2 py-0.5 rounded-full text-[0.6rem] font-bold tracking-wide ${activeService.badgeColor}`}>
-                      {activeService.badge}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Divider */}
-              <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5" />
-
-              {/* Description */}
-              <p className="text-[0.82rem] text-gray-400 leading-relaxed mb-6">
-                {activeService.popupDescription}
-              </p>
-
-              {/* Highlights */}
-              <div className="mb-2">
-                <p className="text-[0.7rem] font-semibold uppercase tracking-wider text-gray-500 mb-3">
-                  Key Highlights
-                </p>
-                <ul className="space-y-2.5">
-                  {activeService.popupHighlights.map((h, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 + i * 0.05 }}
-                      className="flex items-start gap-2.5 text-[0.8rem] text-gray-300"
-                    >
-                      <div className={`w-4 h-4 rounded-full bg-white/[0.04] flex items-center justify-center shrink-0 mt-0.5 border border-white/[0.08]`}>
-                        <Check size={9} className={activeService.iconColor} />
-                      </div>
-                      {h}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
@@ -279,7 +196,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`glass-card rounded-2xl p-7 relative overflow-hidden group ${service.colSpan} ${
+              className={`glass-card rounded-2xl p-5 sm:p-7 relative overflow-hidden group ${service.colSpan} ${
                 service.isFeatured
                   ? "border-plasma/30 shadow-[0_0_30px_rgba(0,229,255,0.1)] [animation:glowPulse_3s_infinite]"
                   : ""
@@ -287,7 +204,7 @@ export default function Services() {
             >
               {service.badge && (
                 <div
-                  className={`absolute top-5 right-5 px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold tracking-wide ${service.badgeColor}`}
+                  className={`absolute top-3 right-3 sm:top-5 sm:right-5 px-2 sm:px-2.5 py-0.5 rounded-full text-[0.6rem] sm:text-[0.65rem] font-bold tracking-wide ${service.badgeColor}`}
                 >
                   {service.badge}
                 </div>
@@ -317,15 +234,15 @@ export default function Services() {
                 ))}
               </ul>
 
-              <button
-                onClick={() => setActivePopup(service.id)}
-                className={`inline-flex items-center text-sm font-semibold transition-colors group/link cursor-pointer ${service.ctaColor}`}
+              <Link
+                to={`/services/${service.id}`}
+                className={`inline-flex items-center text-sm font-semibold transition-colors ${service.ctaColor}`}
               >
                 Learn More
-                <span className="ml-2 group-hover/link:translate-x-1 transition-transform">
+                <span className="ml-2 group-hover:translate-x-1 transition-transform">
                   →
                 </span>
-              </button>
+              </Link>
             </motion.div>
           ))}
         </div>

@@ -18,7 +18,7 @@ export default function DigitalMarketingPage() {
         <Navbar />
         
         {/* Hero Section */}
-        <section className="pt-28 pb-16 relative overflow-hidden">
+        <section className="pt-20 sm:pt-28 pb-12 sm:pb-16 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-hero z-0" />
           <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-accent-teal mb-6">
@@ -30,13 +30,10 @@ export default function DigitalMarketingPage() {
             <p className="text-sm text-gray-400 mb-8">
               Stop guessing. Start growing. FlowGent designs and manages paid advertising campaigns on Facebook, YouTube, and TikTok — built to reach the right audience, drive real results, and maximize every dollar you spend.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link to="/#contact" className="inline-flex items-center justify-center gap-2 bg-gradient-teal text-primary-dark font-semibold text-sm px-6 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(0,200,150,0.4)] transition-all duration-300">
-                Start a Campaign
+            <div className="flex justify-center">
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-gradient-teal text-primary-dark font-semibold text-sm px-6 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(0,200,150,0.4)] transition-all duration-300">
+                Contact Us
                 <ArrowRight size={15} />
-              </Link>
-              <Link to="/portfolio" className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white font-medium text-sm px-6 py-2.5 rounded-full hover:bg-white/10 transition-all duration-300">
-                See Our Results
               </Link>
             </div>
           </div>
@@ -48,7 +45,7 @@ export default function DigitalMarketingPage() {
             <p className="text-sm text-gray-400 leading-relaxed mb-12 text-center">
               Every business wants more customers. But throwing money at ads without a strategy is how budgets disappear with nothing to show for it. FlowGent takes a results-first approach to digital marketing — understanding your business goals, identifying your exact target audience, crafting compelling creatives, and running data-optimized campaigns that consistently deliver measurable returns. Whether you want to build brand awareness, generate qualified leads, or drive direct sales, our team manages every part of the campaign so you can focus on serving the customers we bring you.
             </p>
-            <div className="glass-card p-7 rounded-2xl border border-white/[0.06]">
+            <div className="glass-card p-5 sm:p-7 rounded-2xl border border-white/[0.06]">
               <h2 className="text-xl font-display font-bold mb-3 text-accent-teal">What Is Performance Digital Marketing?</h2>
               <p className="text-[0.85rem] text-gray-400 leading-relaxed">
                 Performance digital marketing means every campaign is built around measurable outcomes — not just impressions or likes. It means setting clear objectives, targeting audiences with precision, creating ads that convert, and continuously optimizing based on real data. FlowGent manages your campaigns end-to-end across Facebook, YouTube, and TikTok — the three platforms where audiences spend the most time and where businesses consistently get the highest return on ad spend.
@@ -89,7 +86,7 @@ export default function DigitalMarketingPage() {
                     </div>
                   )}
                   {platform.cta && (
-                    <Link to="/#contact" className="inline-block mt-6 text-accent-teal hover:underline font-medium">
+                    <Link to="/contact" className="inline-block mt-6 text-accent-teal hover:underline font-medium">
                       {platform.cta} &rarr;
                     </Link>
                   )}

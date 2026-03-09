@@ -28,13 +28,16 @@ export default function Footer() {
       </button>
 
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 mb-10 md:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 mb-10 md:mb-12">
           {/* Brand Column */}
           <div className="space-y-6">
             <Link to="/" className="inline-block">
-              <div className="text-2xl font-display font-bold tracking-tighter flex items-center">
-                <span className="text-white">Flow</span>
-                <span className="text-gradient-mixed">Gent</span>
+              <div className="flex items-center gap-3">
+                <img src="https://i.ibb.co/vCKnt8z8/Ai-Logo-with-white-background.png" alt="FlowGent logo" className="w-12 h-12 rounded-full object-cover shadow-md" />
+                <div className="text-2xl font-display font-bold tracking-tighter flex items-center">
+                  <span className="text-white">Flow</span>
+                  <span className="text-gradient-mixed">Gent</span>
+                </div>
               </div>
             </Link>
             <p className="text-gray-500 leading-relaxed text-[0.8rem]">
@@ -43,10 +46,10 @@ export default function Footer() {
               AI Agents — powering businesses worldwide.
             </p>
             <div className="flex gap-3">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/[0.04] flex items-center justify-center hover:bg-electric hover:text-void transition-all duration-300 text-gray-500">
+              <a href="https://www.facebook.com/flowgent.tech" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/[0.04] flex items-center justify-center hover:bg-electric hover:text-void transition-all duration-300 text-gray-500">
                 <Facebook size={16} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/[0.04] flex items-center justify-center hover:bg-electric hover:text-void transition-all duration-300 text-gray-500">
+              <a href="https://www.instagram.com/flowgent.tech" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/[0.04] flex items-center justify-center hover:bg-electric hover:text-void transition-all duration-300 text-gray-500">
                 <Instagram size={16} />
               </a>
               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/[0.04] flex items-center justify-center hover:bg-electric hover:text-void transition-all duration-300 text-gray-500">

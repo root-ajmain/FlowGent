@@ -8,6 +8,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const location = useLocation();
   const pathname = location.pathname;
 
@@ -46,6 +47,8 @@ export default function Navbar() {
           el.scrollIntoView({ behavior: "smooth", block: "start" });
           // Clean URL without hash
           window.history.pushState(null, "", "/");
+          // mark section active
+          setActiveSection(hash);
         }
       }
     },
@@ -57,7 +60,91 @@ export default function Navbar() {
     { name: "Services", href: "/#services" },
     { name: "WhatsApp API & Platform Pricing", href: "/#pricing" },
     { name: "About", href: "/#why-us" },
+    { name: "Contact", href: "/contact" },
   ];
+
+
+  // Observe sections on the page and set active nav item when they enter the viewport
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const ids = navItems
+      .map(i => (i.href.includes('#') ? i.href.split('#')[1] : null))
+      .filter(Boolean) as string[];
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter(e => e.isIntersecting);
+      if (visible.length === 0) {
+        setActiveSection(null);
+        return;
+      }
+      // pick the most visible section
+      const top = visible.reduce((a, b) => (a.intersectionRatio > b.intersectionRatio ? a : b));
+      setActiveSection(top.target.id);
+    }, { root: null, rootMargin: '-40% 0px -40% 0px', threshold: [0.1, 0.25, 0.5, 0.75, 1] });
+
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
+  const mobileMenu = (
+    <AnimatePresence>
+      {isMobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="fixed inset-0 bg-void/98 backdrop-blur-xl z-[9998] flex flex-col items-center justify-center gap-8"
+        >
+          <ul className="flex flex-col items-center gap-6">
+            {navItems.map((item, i) => (
+              <motion.li
+                key={item.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.35, delay: 0.05 + i * 0.07, ease: "easeOut" }}
+              >
+                {(() => {
+                  const hasHash = item.href.includes('#');
+                  const id = hasHash ? item.href.split('#')[1] : null;
+                  const isActive = hasHash ? activeSection === id : (pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href.split("#")[0]) && item.href.split("#")[0] !== "/"));
+                  const linkTarget = hasHash ? "/" : item.href;
+                  return (
+                    <Link
+                      to={linkTarget}
+                      onClick={(e) => { handleNavClick(e, item.href); if (hasHash && id) setActiveSection(id); setIsMobileMenuOpen(false); }}
+                      className={`text-xl font-display font-medium transition-colors ${isActive ? 'text-gradient-spectrum' : 'text-white hover:text-electric'}`}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })()}
+              </motion.li>
+            ))}
+          </ul>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.35, delay: 0.05 + navItems.length * 0.07, ease: "easeOut" }}
+          >
+            <Link
+              to="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="bg-gradient-electric text-void font-semibold text-base px-7 py-3 rounded-full mt-4 inline-block cursor-pointer"
+            >
+              Get Started
+            </Link>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 
   const popup = (
     <AnimatePresence>
@@ -92,9 +179,6 @@ export default function Navbar() {
             <h3 className="text-xl font-display font-bold text-white mb-2">
               Let's Get Started!
             </h3>
-            <p className="text-sm text-gray-400 mb-6 leading-relaxed">
-              Ready to grow your business? Contact our team — we'll help you build your complete digital ecosystem.
-            </p>
 
             <div className="space-y-3">
               <a
@@ -126,8 +210,9 @@ export default function Navbar() {
 
   return (
     <>
-    {/* Portal the popup to document.body so it's not trapped inside the header */}
+    {/* Portal the popup & mobile menu to document.body so they're not trapped inside the header's stacking context */}
     {createPortal(popup, document.body)}
+    {createPortal(mobileMenu, document.body)}
 
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -135,7 +220,7 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 z-50">
+        <Link to="/" className="flex items-center gap-2 z-[70] relative">
           <div className="text-xl font-display font-bold tracking-tighter flex items-center">
             <span className="text-white">Flow</span>
             <span className="text-gradient-mixed">Gent</span>
@@ -145,84 +230,45 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-7">
           <ul className="flex items-center gap-7">
-            {navItems.map((item) => (
-              <li key={item.name}>
-                <Link
-                  to={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  className={`text-[0.8rem] font-medium tracking-wide transition-colors duration-300 ${
-                    pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href.split("#")[0]) && item.href.split("#")[0] !== "/")
-                      ? "text-gradient-spectrum"
-                      : "text-gray-400 hover:text-white"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const hasHash = item.href.includes('#');
+              const id = hasHash ? item.href.split('#')[1] : null;
+              const isActive = hasHash ? activeSection === id : (pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href.split("#")[0]) && item.href.split("#")[0] !== "/"));
+
+              return (
+                <li key={item.name}>
+                  {(() => {
+                    const linkTarget = hasHash ? "/" : item.href;
+                    return (
+                      <Link
+                        to={linkTarget}
+                        onClick={(e) => { handleNavClick(e, item.href); if (hasHash && id) setActiveSection(id); }}
+                        className={`text-[0.8rem] font-medium tracking-wide transition-colors duration-300 ${isActive ? 'text-gradient-spectrum' : 'text-gray-400 hover:text-white'}`}
+                      >
+                        {item.name}
+                      </Link>
+                    );
+                  })()}
+                </li>
+              );
+            })}
           </ul>
-          <button
-            onClick={() => setShowPopup(true)}
+          <Link
+            to="/contact"
             className="bg-gradient-electric text-void font-semibold text-xs px-5 py-2 rounded-full hover:shadow-[0_0_20px_rgba(108,99,255,0.3)] transition-all duration-300 tracking-wide cursor-pointer"
           >
             Get Started
-          </button>
+          </Link>
         </nav>
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden z-50 text-white"
+          className="md:hidden z-[9999] relative text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
-
-        {/* Mobile Nav */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="fixed inset-0 bg-void/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8"
-            >
-              <ul className="flex flex-col items-center gap-6">
-                {navItems.map((item, i) => (
-                  <motion.li
-                    key={item.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.35, delay: 0.05 + i * 0.07, ease: "easeOut" }}
-                  >
-                    <Link
-                      to={item.href}
-                      onClick={(e) => handleNavClick(e, item.href)}
-                      className="text-xl font-display font-medium text-white hover:text-electric transition-colors"
-                    >
-                      {item.name}
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 0.35, delay: 0.05 + navItems.length * 0.07, ease: "easeOut" }}
-              >
-                <button
-                  onClick={() => { setIsMobileMenuOpen(false); setShowPopup(true); }}
-                  className="bg-gradient-electric text-void font-semibold text-base px-7 py-3 rounded-full mt-4 inline-block cursor-pointer"
-                >
-                  Get Started
-                </button>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </header>
     </>

@@ -19,7 +19,7 @@ export default function WhatsAppApiPage() {
         <Navbar />
 
         {/* Hero Section */}
-        <section className="pt-28 pb-16 relative overflow-hidden">
+        <section className="pt-20 sm:pt-28 pb-12 sm:pb-16 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-hero z-0" />
           <div className="absolute top-1/3 -right-1/4 w-1/2 h-1/2 bg-accent-teal/8 rounded-full blur-[140px]" />
           <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
@@ -35,13 +35,10 @@ export default function WhatsAppApiPage() {
             <p className="text-xs text-gray-500 mb-8 max-w-xl mx-auto leading-relaxed">
               FlowGent covers all aspects of Marketing, CRM &amp; Customer Support in one place.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <Link to="/#contact" className="inline-flex items-center justify-center gap-2 bg-gradient-teal text-primary-dark font-semibold text-sm px-6 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(0,200,150,0.4)] transition-all duration-300">
-                Get API Access
+            <div className="flex justify-center">
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-gradient-teal text-primary-dark font-semibold text-sm px-6 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(0,200,150,0.4)] transition-all duration-300">
+                Contact Us
                 <ArrowRight size={15} />
-              </Link>
-              <Link to="/#contact" className="inline-flex items-center justify-center gap-2 bg-white/[0.03] border border-white/[0.08] text-white/90 font-medium text-sm px-6 py-2.5 rounded-full hover:bg-white/[0.07] transition-all duration-300">
-                See a Live Demo
               </Link>
             </div>
           </div>
@@ -53,7 +50,7 @@ export default function WhatsAppApiPage() {
             <p className="text-sm text-gray-400 leading-relaxed mb-12 text-center">
               WhatsApp is not just a messaging app — it is the primary channel through which businesses and customers communicate every single day. With over 2 billion active WhatsApp users globally, the opportunity to engage your audience directly, personally, and instantly has never been greater. FlowGent gives your business access to the WhatsApp Official Business API — the enterprise-grade solution approved by Meta — so you can send bulk messages, automate customer interactions, run broadcast campaigns, and deliver real-time support at a scale that no manual team could match.
             </p>
-            <div className="glass-card p-7 rounded-2xl border border-white/[0.06]">
+            <div className="glass-card p-5 sm:p-7 rounded-2xl border border-white/[0.06]">
               <h2 className="text-xl font-display font-bold mb-3 text-accent-teal">What Is the WhatsApp Official Business API?</h2>
               <p className="text-[0.85rem] text-gray-400 leading-relaxed">
                 The WhatsApp Official Business API is Meta&apos;s official platform built for medium to large businesses that need to communicate with thousands — or millions — of customers through WhatsApp. Unlike the regular WhatsApp Business App, the API has no message limits, supports full automation through chatbots and CRM integration, allows broadcast messages to opted-in customers, and comes with end-to-end encryption and full Meta compliance. FlowGent is your authorized gateway to this platform, handling the setup, configuration, approval, and ongoing management on your behalf.
@@ -155,7 +152,7 @@ export default function WhatsAppApiPage() {
               <p className="text-xs text-gray-500 max-w-md mx-auto">Discover everything you can do with FlowGent — notify, chat &amp; engage your users, all in one place</p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {[
                 { icon: Bot, title: "Chatbot", desc: "Easy-to-use Chatbot Flow builder to build your conversational journeys", color: "text-electric", bg: "bg-electric/8" },
                 { icon: MessageSquare, title: "Shared Inbox", desc: "Share the inbox across your team and provide stellar support on WhatsApp", color: "text-accent-teal", bg: "bg-accent-teal/8" },

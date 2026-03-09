@@ -109,8 +109,25 @@ export default function Portfolio() {
                   referrerPolicy="no-referrer"
                 />
 
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-primary-dark/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                {/* Always-visible info bar on mobile, hover overlay on desktop */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary-dark/95 via-primary-dark/70 to-transparent p-4 pt-10 md:hidden">
+                  <span className="text-accent-teal font-mono text-[0.65rem] mb-1 tracking-wide block">
+                    {project.category}
+                  </span>
+                  <h3 className="text-base font-display font-bold text-white mb-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-400 text-xs mb-2">{project.metrics}</p>
+                  <Link
+                    to={`/portfolio/${project.id}`}
+                    className="bg-white/10 hover:bg-white/20 text-white font-medium text-xs py-1.5 px-3 rounded-lg border border-white/[0.1] transition-colors w-max inline-block"
+                  >
+                    View Case Study
+                  </Link>
+                </div>
+
+                {/* Desktop hover overlay */}
+                <div className="absolute inset-0 bg-primary-dark/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex flex-col justify-end p-6">
                   <span className="text-accent-teal font-mono text-[0.7rem] mb-1.5 tracking-wide">
                     {project.category}
                   </span>

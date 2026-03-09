@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import DevToolsBlocker from '@/components/DevToolsBlocker';
 import ScrollToTop from '@/components/ScrollToTop';
 
@@ -44,7 +44,7 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/careers" element={<CareersPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/contact" element={<HomePage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/portfolio/:id" element={<PortfolioCaseStudy />} />
           {/* Pricing is now embedded in the home page */}

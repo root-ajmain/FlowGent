@@ -282,7 +282,7 @@ export default function Process() {
           {/* ═══ Real ECG Monitor (Desktop) — Canvas sweep left→right ═══ */}
           <EcgMonitor />
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-8 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 relative z-10">
             {steps.map((step, index) => (
               <motion.div
                 key={index}
@@ -292,12 +292,12 @@ export default function Process() {
                 transition={{ delay: index * 0.2 }}
                 className="relative group"
               >
-                {/* Connecting Line (Mobile) */}
+                {/* Connecting Line (Mobile only - hidden on sm+) */}
                 {index !== steps.length - 1 && (
-                  <div className="md:hidden absolute left-[1.75rem] top-[3.5rem] bottom-[-2rem] w-px bg-gradient-to-b from-electric/30 to-transparent" />
+                  <div className="sm:hidden absolute left-[1.75rem] top-[3.5rem] bottom-[-2rem] w-px bg-gradient-to-b from-electric/30 to-transparent" />
                 )}
 
-                <div className="flex md:flex-col items-start md:items-center gap-5 md:gap-6">
+                <div className="flex sm:flex-col md:flex-col items-start sm:items-center md:items-center gap-5 md:gap-6">
                   {/* Step circle with ping animation */}
                   <div
                     className="w-14 h-14 md:w-[4.5rem] md:h-[4.5rem] rounded-full glass-card flex items-center justify-center border border-electric/20 bg-electric/[0.06] shrink-0 relative z-10 transition-all duration-500 group-hover:border-electric/50 group-hover:bg-electric/[0.12] group-hover:shadow-[0_0_20px_rgba(108,99,255,0.25)]"
@@ -310,7 +310,7 @@ export default function Process() {
                     </span>
                   </div>
 
-                  <div className="md:text-center pt-3 md:pt-0">
+                  <div className="sm:text-center md:text-center pt-3 sm:pt-0 md:pt-0">
                     <h3 className="text-lg font-display font-bold text-white mb-2 transition-colors duration-300 group-hover:text-gradient-spectrum">
                       {step.title}
                     </h3>

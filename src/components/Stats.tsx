@@ -64,7 +64,7 @@ export default function Stats() {
               className="flex flex-col items-center justify-center px-4"
             >
               <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-              <span className="text-black/50 font-semibold mt-1.5 text-[0.65rem] md:text-xs uppercase tracking-widest">
+              <span className="text-black/50 font-semibold mt-1.5 text-[0.7rem] sm:text-xs uppercase tracking-widest">
                 {stat.label}
               </span>
             </motion.div>

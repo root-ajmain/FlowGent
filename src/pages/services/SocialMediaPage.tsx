@@ -18,7 +18,7 @@ export default function SocialMediaPage() {
         <Navbar />
         
         {/* Hero Section */}
-        <section className="pt-28 pb-16 relative overflow-hidden">
+        <section className="pt-20 sm:pt-28 pb-12 sm:pb-16 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-hero z-0" />
           <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-accent-teal mb-6">
@@ -30,13 +30,10 @@ export default function SocialMediaPage() {
             <p className="text-sm text-gray-400 mb-8">
               Your brand, built and managed across every platform your customers use — Facebook, Instagram, YouTube, TikTok, and LinkedIn — with a unified strategy that drives real growth.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link to="/#contact" className="inline-flex items-center justify-center gap-2 bg-gradient-teal text-primary-dark font-semibold text-sm px-6 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(0,200,150,0.4)] transition-all duration-300">
-                Build My Ecosystem
+            <div className="flex justify-center">
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-gradient-teal text-primary-dark font-semibold text-sm px-6 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(0,200,150,0.4)] transition-all duration-300">
+                Contact Us
                 <ArrowRight size={15} />
-              </Link>
-              <Link to="/portfolio" className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white font-medium text-sm px-6 py-2.5 rounded-full hover:bg-white/10 transition-all duration-300">
-                View Our Work
               </Link>
             </div>
           </div>
@@ -48,7 +45,7 @@ export default function SocialMediaPage() {
             <p className="text-sm text-gray-400 leading-relaxed mb-12 text-center">
               In today&apos;s world, your customers are not on just one platform. They discover brands on Facebook, watch reviews on YouTube, scroll TikTok for entertainment and product ideas, connect on Instagram, and verify credibility on LinkedIn. A business that is missing from any of these touchpoints is losing customers every single day. FlowGent builds and manages your complete social media ecosystem — not just individual pages, but a cohesive, strategy-driven digital presence that speaks consistently across every platform and converts attention into loyal customers.
             </p>
-            <div className="glass-card p-7 rounded-2xl border border-white/[0.06]">
+            <div className="glass-card p-5 sm:p-7 rounded-2xl border border-white/[0.06]">
               <h2 className="text-xl font-display font-bold mb-3 text-accent-teal">What Is a Social Media Ecosystem?</h2>
               <p className="text-[0.85rem] text-gray-400 leading-relaxed">
                 A social media ecosystem is not simply having accounts on multiple platforms. It is a strategically built, interconnected network of branded digital touchpoints — each platform optimized for its unique audience and content format, but all working together to tell a consistent brand story. FlowGent designs this ecosystem from the ground up: setting up and fully branding each profile, developing a content strategy rooted in your business goals, creating and scheduling original content, engaging with your community, and reporting on growth every step of the way.
@@ -71,7 +68,7 @@ export default function SocialMediaPage() {
                 { name: "TikTok", icon: "🎵", description: "TikTok is one of the fastest-growing discovery platforms. We create short-form video content strategies, trending hooks, and viral-optimized posts to get your brand in front of a young, buying audience." },
                 { name: "LinkedIn", icon: "💼", description: "For B2B brands and professionals, we manage your LinkedIn Company Page — thought leadership posts, industry updates, and employee advocacy strategies to build professional credibility." }
               ].map((platform, i) => (
-                <div key={i} className="bg-primary-navy p-8 rounded-2xl border border-white/5 hover:border-accent-teal/30 transition-colors">
+                <div key={i} className="bg-primary-navy p-5 sm:p-8 rounded-2xl border border-white/5 hover:border-accent-teal/30 transition-colors">
                   <div className="text-4xl mb-4">{platform.icon}</div>
                   <h3 className="text-base font-semibold mb-2">{platform.name}</h3>
                   <p className="text-gray-500 leading-relaxed text-[0.8rem]">{platform.description}</p>
